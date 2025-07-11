@@ -1,0 +1,32 @@
+﻿<Window x:Class="Publisher.OrderBook"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Publisher"
+        mc:Ignorable="d"
+        Title="OrderBook" FontSize="15"
+        ResizeMode="NoResize"
+        Height="450" Width="800" 
+        WindowStartupLocation="CenterScreen"
+        Background="#dbcead" Icon="/sources/images/addBookIcon.png">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Додавання книги до замовлення" FontSize="25" FontWeight="DemiBold" 
+                   HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="200">
+            <TextBlock Text="Назва"/>
+            <ComboBox x:Name="BookTitlesList" Height="25" DropDownOpened="UpdateBookTitles" MaxWidth="300"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="200">
+            <TextBlock Text="Кількість"/>
+            <TextBox x:Name="BookNumber"/>
+        </StackPanel>
+        <Button Style="{StaticResource MainStyle}" Grid.Row="3" Content="Додати книгу" Click="AddBook"/>
+    </Grid>
+</Window>

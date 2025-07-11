@@ -1,0 +1,90 @@
+﻿<Window x:Class="Publisher.UserProfileSettings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Publisher"
+        mc:Ignorable="d"
+        Title="UserProfileSettings"
+        FontSize="15"
+        ResizeMode="NoResize"
+        Height="450" Width="800" 
+        WindowStartupLocation="CenterScreen"
+        Background="#dbcead" Icon="/sources/images/profile.png">
+    <Grid Loaded="PasteInfo">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width=".5*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width=".1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Button Grid.Column="2" Margin="0 5 5 0"
+                Background="Transparent" BorderBrush="Transparent" 
+                HorizontalAlignment="Right" VerticalAlignment="Top"
+                Click="GoHome">
+            <Image Source="/sources/images/home.png" Height="35" Width="35"/>
+        </Button>
+        <Border BorderBrush="#49453a" BorderThickness="0 1" Background="#c2b79a">
+            <Image Grid.Column="0" Grid.Row="0"
+                   Source="/sources/images/profilephoto.png"
+                   Width="234" Height="217"/>
+        </Border>
+        <Border x:Name="EmployeeInfo" Grid.Column="1" Grid.Row="0" BorderBrush="#49453a" BorderThickness="1 0">
+            <Grid Background="#aaa086">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width=".7*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Border BorderBrush="#49453a" BorderThickness="0 0 1 1" Grid.Row="0" Grid.Column="0">
+                    <TextBlock Style="{StaticResource ProfileInfo}" Text="ПІБ:"/>
+                </Border>
+                <Border BorderBrush="#49453a" BorderThickness="0 0 1 1" Grid.Row="1" Grid.Column="0">
+                    <TextBlock Style="{StaticResource ProfileInfo}" Text="Номер телефону:"/>
+                </Border>
+                <Border BorderBrush="#49453a" BorderThickness="0 0 1 1" Grid.Row="2" Grid.Column="0">
+                    <TextBlock Style="{StaticResource ProfileInfo}" Text="Електронна пошта:"/>
+                </Border>
+                <Border BorderBrush="#49453a" BorderThickness="0 0 1 1" Grid.Row="3" Grid.Column="0">
+                    <TextBlock Style="{StaticResource ProfileInfo}" Text="Стать:"/>
+                </Border>
+                <Border BorderBrush="#49453a" BorderThickness="0 0 1 1" Grid.Row="4" Grid.Column="0">
+                    <TextBlock Style="{StaticResource ProfileInfo}" Text="Номер паспорту:"/>
+                </Border>
+                <Border BorderBrush="#49453a" BorderThickness="0 0 1 1" Grid.Row="5" Grid.Column="0">
+                    <TextBlock Style="{StaticResource ProfileInfo}" Text="Посада:"/>
+                </Border>
+                <Border BorderBrush="#49453a" BorderThickness="0 0 0 1" Grid.Row="0" Grid.Column="1">
+                    <TextBox x:Name="EmployeeFullName" Style="{StaticResource ProfileInfoData}"/>
+                </Border>
+                <Border BorderBrush="#49453a" BorderThickness="0 0 0 1" Grid.Row="1" Grid.Column="1">
+                    <TextBox x:Name="EmployeePhoneNumber" Style="{StaticResource ProfileInfoData}"/>
+                </Border>
+                <Border BorderBrush="#49453a" BorderThickness="0 0 0 1" Grid.Row="2" Grid.Column="1">
+                    <TextBox x:Name="EmployeeEmail" Style="{StaticResource ProfileInfoData}"/>
+                </Border>
+                <Border BorderBrush="#49453a" BorderThickness="0 0 0 1" Grid.Row="3" Grid.Column="1">
+                    <TextBox x:Name="EmployeeSex" Style="{StaticResource ProfileInfoData}"/>
+                </Border>
+                <Border BorderBrush="#49453a" BorderThickness="0 0 0 1" Grid.Row="4" Grid.Column="1">
+                    <TextBox x:Name="EmployeePassport" Style="{StaticResource ProfileInfoData}"/>
+                </Border>
+                <Border BorderBrush="#49453a" BorderThickness="0 0 0 1" Grid.Row="5" Grid.Column="1">
+                    <TextBox x:Name="EmployeePost" Style="{StaticResource ProfileInfoData}"/>
+                </Border>
+            </Grid>
+        </Border>
+        <Button x:Name="SignOut" Grid.Column="1" Grid.Row="1" Content="Вийти з акаунту" 
+                    Style="{StaticResource MainStyle}" Click="LogOut"/>
+    </Grid>
+</Window>

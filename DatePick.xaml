@@ -1,0 +1,38 @@
+﻿<Window x:Class="Publisher.DatePick"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Publisher"
+        mc:Ignorable="d"
+        Title="DatePick" FontSize="15"
+        ResizeMode="NoResize"
+        Height="450" Width="800" 
+        WindowStartupLocation="CenterScreen"
+        Background="#dbcead" Icon="/sources/images/salesDepICO.png">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Обрання періоду" FontSize="25" FontWeight="DemiBold" 
+               HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="200">
+            <TextBlock Text="Початок"/>
+            <DatePicker x:Name="StartDate" Height="25" MaxWidth="300"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="200">
+            <TextBlock Text="Кінець"/>
+            <DatePicker x:Name="EndDate" Height="25" MaxWidth="300"/>
+        </StackPanel>
+        <StackPanel x:Name="NumberStackPanel" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="200">
+            <TextBlock Text="Кількість"/>
+            <TextBox x:Name="NumberOfElements"/>
+        </StackPanel>
+        <Button x:Name="MakeSample" Style="{StaticResource MainStyle}" Grid.Row="4" 
+                Content="Зробити вибірку" Click="SelectElements"/>
+    </Grid>
+</Window>

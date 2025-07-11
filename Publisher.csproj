@@ -1,0 +1,293 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0D952AB3-386A-4A36-8364-A08067FFC390}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Publisher</RootNamespace>
+    <AssemblyName>Publisher</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.3, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>packages\iTextSharp.5.5.13.3\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.3.0.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\MySQL\MySQL Connector NET 8.3.0\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="AddAuthor.xaml.cs">
+      <DependentUpon>AddAuthor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddBook.xaml.cs">
+      <DependentUpon>AddBook.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddCustomer.xaml.cs">
+      <DependentUpon>AddCustomer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddEmployee.xaml.cs">
+      <DependentUpon>AddEmployee.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BookInformation.xaml.cs">
+      <DependentUpon>BookInformation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BooksGeneralList.xaml.cs">
+      <DependentUpon>BooksGeneralList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Catalog.xaml.cs">
+      <DependentUpon>Catalog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChangeNumberOfBookCopies.xaml.cs">
+      <DependentUpon>ChangeNumberOfBookCopies.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DatePick.xaml.cs">
+      <DependentUpon>DatePick.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeesDepartment.xaml.cs">
+      <DependentUpon>EmployeesDepartment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeesGeneralList.xaml.cs">
+      <DependentUpon>EmployeesGeneralList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MakeOrder.xaml.cs">
+      <DependentUpon>MakeOrder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Methods.cs" />
+    <Compile Include="OrderBook.xaml.cs">
+      <DependentUpon>OrderBook.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OrderInfo.cs" />
+    <Compile Include="RemoveEmployee.xaml.cs">
+      <DependentUpon>RemoveEmployee.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment.xaml.cs">
+      <DependentUpon>SalesDepartment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SessionData.cs" />
+    <Compile Include="UserProfileSettings.xaml.cs">
+      <DependentUpon>UserProfileSettings.xaml</DependentUpon>
+    </Compile>
+    <Page Include="AddAuthor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddBook.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddCustomer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddEmployee.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BookInformation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BooksGeneralList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Catalog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChangeNumberOfBookCopies.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DatePick.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EmployeesDepartment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EmployeesGeneralList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Home.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LogIn.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Home.xaml.cs">
+      <DependentUpon>Home.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LogIn.xaml.cs">
+      <DependentUpon>LogIn.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="MakeOrder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="OrderBook.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RemoveEmployee.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SalesDepartment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserProfileSettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Debug\session\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="sources\images\addAuthorIcon.png" />
+    <Resource Include="sources\images\addBookIcon.png" />
+    <Resource Include="sources\images\applyFilters.png" />
+    <Resource Include="sources\images\authorsPopularity.png" />
+    <Resource Include="sources\images\booksPopularity.png" />
+    <Resource Include="sources\images\cart.png" />
+    <Resource Include="sources\images\catalog.png" />
+    <Resource Include="sources\images\changeCopiesNumber.png" />
+    <Resource Include="sources\images\dateToHighest.png" />
+    <Resource Include="sources\images\dateToLowest.png" />
+    <Resource Include="sources\images\deleteBookIcon.png" />
+    <Resource Include="sources\images\editBookIcon.png" />
+    <Resource Include="sources\images\emplyeeDep.png" />
+    <Resource Include="sources\images\empty.png" />
+    <Resource Include="sources\images\emptyBook.jpeg" />
+    <Resource Include="sources\images\home.jpeg" />
+    <Resource Include="sources\images\home.png" />
+    <Resource Include="sources\images\login.png" />
+    <Resource Include="sources\images\logo.ico" />
+    <Resource Include="sources\images\makeOrder.png" />
+    <Resource Include="sources\images\openFilters.png" />
+    <Resource Include="sources\images\priceToHighest.png" />
+    <Resource Include="sources\images\priceToLowest.png" />
+    <Resource Include="sources\images\profile.png" />
+    <Resource Include="sources\images\profilephoto.png" />
+    <Resource Include="sources\images\resetFilters.png" />
+    <Resource Include="sources\images\salesDepIco.png" />
+    <Resource Include="sources\images\salesReport.png" />
+    <Resource Include="sources\images\sexSort.png" />
+    <Resource Include="sources\images\signup.png" />
+    <Resource Include="sources\images\sortPost.png" />
+    <Resource Include="sources\images\toggleBTN.png" />
+    <Resource Include="sources\images\UI\burger-menu.png" />
+    <Resource Include="sources\images\UI\xmark.png" />
+    <Resource Include="sources\images\userin.png" />
+    <Resource Include="sources\images\userup.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="sources\images\vacantPosts.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="sources\images\regularDiscount.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="sources\images\addPerson.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="sources\images\removePerson.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="sources\images\bookGeneralList.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="sources\images\employeeGeneralList.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="sources\images\addVacantPost.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,81 @@
+﻿<Window x:Class="Publisher.BookInformation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Publisher"
+        mc:Ignorable="d"
+        Title="BookInformation" FontSize="15"
+        Height="450" Width="800" 
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Background="#dbcead" Icon="/sources/images/catalog.png">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width=".6*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock x:Name="BookTitle" Text="Назва книги" FontWeight="DemiBold" FontSize="20" Grid.ColumnSpan="2" 
+                   HorizontalAlignment="Center" VerticalAlignment="Center" MaxWidth="500" 
+                   TextTrimming="CharacterEllipsis"/>
+        <Border Grid.Row="1" Width="210" Height="315" BorderThickness="1" BorderBrush="Black">
+            <Image x:Name="BookImage" Source="/sources/images/empty.png"/>
+        </Border>
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Ціна книги: " FontWeight="DemiBold" VerticalAlignment="Center" Margin="10 0"/>
+                <TextBlock x:Name="BookPrice"
+                         HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="1">
+                <TextBlock Text="Жанр книги: " FontWeight="DemiBold" VerticalAlignment="Center" Margin="10 0"/>
+                <TextBlock x:Name="BookGenre"
+                         HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="2">
+                <TextBlock Text="ISBN книги: " FontWeight="DemiBold" VerticalAlignment="Center" Margin="10 0"/>
+                <TextBlock x:Name="BookISBN"
+                         HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="3">
+                <TextBlock Text="К-ть сторінок: " FontWeight="DemiBold" VerticalAlignment="Center" Margin="10 0"/>
+                <TextBlock x:Name="BookPagesNumber"
+                         HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="4">
+                <TextBlock Text="Формат книги: " FontWeight="DemiBold" VerticalAlignment="Center" Margin="10 0"/>
+                <TextBlock x:Name="BookFormat"
+                         HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="5">
+                <TextBlock Text="Автор книги: " FontWeight="DemiBold" VerticalAlignment="Center" Margin="10 0"/>
+                <TextBlock x:Name="BookAuthor"
+                         HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="6">
+                <TextBlock Text="К-ть екземплярів: " FontWeight="DemiBold" VerticalAlignment="Center" Margin="10 0"/>
+                <TextBlock x:Name="BookNumber"
+                         HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="7">
+                <TextBlock Text="Опис книги: " FontWeight="DemiBold" VerticalAlignment="Top" Margin="10 0"/>
+                <TextBlock x:Name="BookDescription" TextWrapping="Wrap" MaxHeight="200" MaxWidth="350"
+                         HorizontalAlignment="Stretch" VerticalAlignment="Top" TextTrimming="CharacterEllipsis"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

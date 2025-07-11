@@ -1,0 +1,58 @@
+﻿<Window x:Class="Publisher.AddCustomer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Publisher"
+        mc:Ignorable="d"
+        Title="AddCustomer" FontSize="15"
+        ResizeMode="NoResize"
+        Height="450" Width="800" 
+        WindowStartupLocation="CenterScreen"
+        Background="#dbcead" Icon="/sources/images/userup.png">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Додавання покупця" FontSize="20" 
+               HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <StackPanel Grid.Row="1" Grid.Column="0" Margin="10 0" VerticalAlignment="Top" Width="320">
+            <TextBlock Text="ПІБ:" 
+           Margin="10 0 0 0" FontWeight="DemiBold"/>
+            <TextBox x:Name="CustomerFullName" BorderThickness="0" Height="25"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="0" Margin="10 0" VerticalAlignment="Top" Width="320">
+            <TextBlock Text="Стать:" 
+           Margin="10 0 0 0" FontWeight="DemiBold"/>
+            <ComboBox x:Name="CustomerSex" BorderThickness="0" Height="25">
+                <ComboBoxItem Content="чоловік"/>
+                <ComboBoxItem Content="жінка"/>
+            </ComboBox>
+        </StackPanel>
+        <StackPanel Grid.Row="3" Grid.Column="0" Margin="10 0" VerticalAlignment="Top" Width="320">
+            <TextBlock Text="Адреса проживання:" 
+           Margin="10 0 0 0" FontWeight="DemiBold"/>
+            <TextBox x:Name="CustomerAdress" BorderThickness="0" Height="25"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1" Margin="10 0" VerticalAlignment="Top" Width="320">
+            <TextBlock Text="Номер телефону:" 
+                   Margin="10 0 0 0" FontWeight="DemiBold"/>
+            <TextBox x:Name="CustomerPhoneNumber" BorderThickness="0" Height="25"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="1" Margin="10 0" VerticalAlignment="Top" Width="320">
+            <TextBlock Text="Електронна пошта:"
+           Margin="10 0 0 0" FontWeight="DemiBold"/>
+            <TextBox x:Name="CustomerEmail" BorderThickness="0" Padding="5"/>
+        </StackPanel>
+        <Button x:Name="BTNAddCustomer" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2"
+            Style="{StaticResource MainStyle}" Content="Додати покупця" Click="ADDCustomer"/>
+    </Grid>
+</Window>

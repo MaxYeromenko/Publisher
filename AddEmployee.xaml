@@ -1,0 +1,97 @@
+﻿<Window x:Class="Publisher.AddEmployee"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Publisher"
+        mc:Ignorable="d"
+        Title="AddEmployee" FontSize="15"
+        ResizeMode="NoResize"
+        Height="450" Width="800" 
+        WindowStartupLocation="CenterScreen"
+        Background="#dbcead" Icon="/sources/images/addPerson.png">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Додавання працівника" FontSize="20" 
+               HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="0"
+                    HorizontalAlignment="Center" VerticalAlignment="Top">
+            <StackPanel Margin="10 0" HorizontalAlignment="Left" Width="150">
+                <TextBlock Text="ПІБ:" Margin="10 0 0 0" FontWeight="DemiBold"/>
+                <TextBox x:Name="EmployeeFullName" BorderThickness="0" Height="25"/>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Grid.Column="0" Margin="10 0" Width="150">
+                <TextBlock Text="Стать:" Margin="10 0 0 0" FontWeight="DemiBold"/>
+                <ComboBox x:Name="EmployeeSex" BorderThickness="0" Height="25">
+                    <ComboBoxItem Content="чоловік"/>
+                    <ComboBoxItem Content="жінка"/>
+                </ComboBox>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="0" 
+                    HorizontalAlignment="Center" VerticalAlignment="Top">
+            <StackPanel Margin="10 0" Width="150">
+                <TextBlock Text="Номер паспорту:" Margin="10 0 0 0" FontWeight="DemiBold"/>
+                <TextBox x:Name="EmployeePassport" BorderThickness="0" Height="25"/>
+            </StackPanel>
+            <StackPanel Margin="10 0" Width="150">
+                <TextBlock Text="Посада:" Margin="10 0 0 0" FontWeight="DemiBold"/>
+                <ComboBox x:Name="EmployeePostList" BorderThickness="0" Height="25" DropDownOpened="UpdateEmployee"/>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="1" 
+                    HorizontalAlignment="Center" VerticalAlignment="Top">
+            <StackPanel Margin="10 0" Width="150">
+                <TextBlock Text="Дата народження:" Margin="10 0 0 0" FontWeight="DemiBold"/>
+                <DatePicker x:Name="EmployeeBirthDate" BorderThickness="0" Height="25"/>
+            </StackPanel>
+            <StackPanel Margin="10 0" Width="150">
+                <TextBlock Text="Сімейний статус:" Margin="10 0 0 0" FontWeight="DemiBold"/>
+                <ComboBox x:Name="EmployeeFamilyStatus" BorderThickness="0" Height="25">
+                    <ComboBoxItem Content="одружений"/>
+                    <ComboBoxItem Content="неодружений"/>
+                </ComboBox>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="0" 
+                    HorizontalAlignment="Center" VerticalAlignment="Top">
+            <StackPanel Margin="10 0" Width="150">
+                <TextBlock Text="Кількість дітей:" Margin="10 0 0 0" FontWeight="DemiBold"/>
+                <TextBox x:Name="EmployeeChildrenNumber" BorderThickness="0" Height="25" Text="0"/>
+            </StackPanel>
+            <StackPanel Margin="10 0" Width="150">
+                <TextBlock Text="Заг. досвід роботи:" Margin="10 0 0 0" FontWeight="DemiBold"/>
+                <TextBox x:Name="EmployeeExperience" BorderThickness="0" Height="25" Text="0"/>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Margin="10 0" Width="150" Grid.Row="3" Grid.Column="1">
+            <TextBlock Text="Замовлень виконано:" Margin="10 0 0 0" FontWeight="DemiBold"/>
+            <TextBox x:Name="EmployeeOrdersCompleted" BorderThickness="0" Height="25" Text="0"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1"
+            HorizontalAlignment="Center" VerticalAlignment="Top">
+            <StackPanel Margin="10 0" Width="150">
+                <TextBlock Text="Номер телефону:" 
+                   Margin="10 0 0 0" FontWeight="DemiBold"/>
+                <TextBox x:Name="EmployeePhoneNumber" BorderThickness="0" Height="25"/>
+            </StackPanel>
+            <StackPanel Margin="10 0" Width="150">
+                <TextBlock Text="Електронна пошта:"
+                Margin="10 0 0 0" FontWeight="DemiBold"/>
+                <TextBox x:Name="EmployeeEmail" BorderThickness="0" Padding="5"/>
+            </StackPanel>
+        </StackPanel>
+        <Button x:Name="BTNAddEmployee" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2"
+            Style="{StaticResource MainStyle}" Content="Додати працівника" Click="ADDEmployee"/>
+    </Grid>
+</Window>

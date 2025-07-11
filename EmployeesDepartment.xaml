@@ -1,0 +1,309 @@
+﻿<Window x:Class="Publisher.EmployeesDepartment"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:Publisher"
+    mc:Ignorable="d"
+    Title="EmployeesDepartment" FontSize="15"
+    ResizeMode="NoResize"
+    Height="450" Width="800" 
+    WindowStartupLocation="CenterScreen"
+    Background="#dbcead" Icon="/sources/images/emplyeeDep.png">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Button Grid.Column="2" Grid.Row="0" Margin="0 5 5 0"
+        Background="Transparent" BorderBrush="Transparent"
+        HorizontalAlignment="Right" VerticalAlignment="Top"
+        Click="GoHome">
+            <Image Source="/sources/images/home.png" Height="35" Width="35"/>
+        </Button>
+        <Grid Grid.Column="0" Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width=".2*"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width=".2*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="SortBySex" Grid.Column="0" Background="Transparent" BorderThickness="0" 
+                    HorizontalAlignment="Center" VerticalAlignment="Center" Click="SortEmployees">
+                <Image x:Name="ImgSortBySex" Source="/sources/images/sexSort.png" Height="30" Width="30"/>
+            </Button>
+            <TextBlock Grid.Column="1" Text="Працівники" FontSize="20" 
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Button x:Name="SortByPost" Grid.Column="2" Background="Transparent" BorderThickness="0"
+                    HorizontalAlignment="Center" VerticalAlignment="Center" Click="SortEmployees">
+                <Image x:Name="ImgSortByPost" Source="/sources/images/sortPost.png" Height="30" Width="30"/>
+            </Button>
+        </Grid>
+        <StackPanel x:Name="EmployeeList" Grid.Row="1" Grid.Column="0" Grid.RowSpan="5" Loaded="ApplyAllFilters"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="6" Grid.Column="0"
+                    VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Button x:Name="BTNPreviousPage" Background="Transparent" BorderThickness="0"
+                    Width="35" Height="35" Click="GoToPreviousPage">
+                <Image Source="/sources/images/toggleBTN.png">
+                    <Image.LayoutTransform>
+                        <RotateTransform Angle="-90"/>
+                    </Image.LayoutTransform>
+                </Image>
+            </Button>
+            <TextBlock x:Name="PageNumber" Margin="5 0" 
+        VerticalAlignment="Center" HorizontalAlignment="Center" Text="1"/>
+            <Button x:Name="BTNNextPage" Background="Transparent" BorderThickness="0"
+      Width="35" Height="35" Click="GoToNextPage">
+                <Image Source="/sources/images/toggleBTN.png">
+                    <Image.LayoutTransform>
+                        <RotateTransform Angle="90"/>
+                    </Image.LayoutTransform>
+                </Image>
+            </Button>
+        </StackPanel>
+        <TextBlock x:Name="ResultsNumber" Text="Результатів: 0" Grid.Row="6" MaxWidth="140" FontSize="12" FontWeight="DemiBold"
+                   VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10" TextTrimming="CharacterEllipsis"/>
+        <TextBlock x:Name="TitleEmployeeInfo" Text="Інформація про працівника" Grid.Column="1" FontSize="20" 
+                   HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed"/>
+        <Grid x:Name="BGEmployeeInfo" Grid.Row="1" Grid.Column="1" Grid.RowSpan="6" Visibility="Collapsed" Panel.ZIndex="10">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Top">
+                <TextBlock Text="ПІБ:" Margin="10 0 0 0" FontWeight="DemiBold"/>
+                <TextBox x:Name="EmployeeFullName" BorderThickness="0" IsReadOnly="True" Background="Transparent"/>
+            </StackPanel>
+            <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center">
+                <TextBlock Text="Стать:" Margin="10 0 0 0" FontWeight="DemiBold"/>
+                <TextBox x:Name="EmployeeSex" BorderThickness="0" IsReadOnly="True"/>
+                <ComboBox x:Name="EditEmployeeSex" BorderThickness="0" Width="115" Visibility="Collapsed">
+                    <ComboBoxItem Content="чоловік"/>
+                    <ComboBoxItem Content="жінка"/>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Bottom">
+                <TextBlock Text="Дата народження:" Margin="10 0 0 0" FontWeight="DemiBold"/>
+                <TextBox x:Name="BirthDate" BorderThickness="0" IsReadOnly="True"/>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Top">
+                <TextBlock Text="Сімейний стан:" Margin="10 0 0 0" FontWeight="DemiBold"/>
+                <TextBox x:Name="FamilyStatus" BorderThickness="0" IsReadOnly="True"/>
+                <ComboBox x:Name="EditEmployeeFamilyStatus" BorderThickness="0" Width="115" Visibility="Collapsed">
+                    <ComboBoxItem Content="одружений"/>
+                    <ComboBoxItem Content="неодружений"/>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center">
+                <TextBlock Text="Кількість дітей:" Margin="10 0 0 0" FontWeight="DemiBold"/>
+                <TextBox x:Name="ChildrenNumber" BorderThickness="0" IsReadOnly="True"/>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Bottom">
+                <TextBlock Text="Номер телефону:" Margin="10 0 0 0" FontWeight="DemiBold"/>
+                <TextBox x:Name="EmployeePhoneNumber" BorderThickness="0" IsReadOnly="True"/>
+            </StackPanel>
+            <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Top">
+                <TextBlock Text="Електронна пошта:" Margin="10 0 0 0" FontWeight="DemiBold"/>
+                <TextBox x:Name="EmployeeEmail" BorderThickness="0" IsReadOnly="True"/>
+            </StackPanel>
+            <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center">
+                <TextBlock Text="Паспорт:" Margin="10 0 0 0" FontWeight="DemiBold"/>
+                <TextBox x:Name="EmployeePassport" BorderThickness="0" IsReadOnly="True"/>
+            </StackPanel>
+            <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Bottom">
+                <TextBlock Text="Досвід роботи (рік):" Margin="10 0 0 0" FontWeight="DemiBold"/>
+                <TextBox x:Name="Experience" BorderThickness="0" IsReadOnly="True"/>
+            </StackPanel>
+            <StackPanel Grid.Row="3" Orientation="Horizontal" VerticalAlignment="Top">
+                <TextBlock Text="Посада:" Margin="10 0 0 0" FontWeight="DemiBold"/>
+                <TextBox x:Name="EmployeePost" BorderThickness="0" IsReadOnly="True"/>
+                <ComboBox x:Name="EditEmployeePostList" BorderThickness="0" 
+                          DropDownOpened="UpdateEmployeePostList" Width="115" Visibility="Collapsed"/>
+            </StackPanel>
+            <StackPanel Grid.Row="3" Orientation="Horizontal" VerticalAlignment="Center">
+                <TextBlock Text="Дата найму:" Margin="10 0 0 0" FontWeight="DemiBold"/>
+                <TextBox x:Name="HireDate" BorderThickness="0" IsReadOnly="True"/>
+            </StackPanel>
+            <StackPanel Grid.Row="3" Orientation="Horizontal" VerticalAlignment="Bottom">
+                <TextBlock Text="Дата звільнення:" Margin="10 0 0 0" FontWeight="DemiBold"/>
+                <TextBox x:Name="FireDate" BorderThickness="0" IsReadOnly="True"/>
+            </StackPanel>
+            <StackPanel Grid.Row="4" Orientation="Horizontal" VerticalAlignment="Top">
+                <TextBlock Text="Замовлень виконано:" Margin="10 0 0 0" FontWeight="DemiBold"/>
+                <TextBox x:Name="OrdersCompleted" BorderThickness="0" IsReadOnly="True"/>
+            </StackPanel>
+            <StackPanel Grid.Row="4" Orientation="Horizontal" VerticalAlignment="Center">
+                <TextBlock Text="Середня зарплата:" Margin="10 0 0 0" FontWeight="DemiBold"/>
+                <TextBox x:Name="AverageEmployeeSalary" BorderThickness="0" IsReadOnly="True"/>
+            </StackPanel>
+            <!--<StackPanel Grid.Row="3" Orientation="Horizontal" VerticalAlignment="Bottom">
+                <TextBlock Text="Бонус:" Margin="10 0 0 0" FontWeight="DemiBold"/>
+                <TextBox x:Name="Bonus" BorderThickness="0" IsReadOnly="True"/>
+            </StackPanel>
+            <StackPanel Grid.Row="4" Orientation="Horizontal" VerticalAlignment="Top">
+                <TextBlock Text="Штраф:" Margin="10 0 0 0" FontWeight="DemiBold"/>
+                <TextBox x:Name="Fine" BorderThickness="0" IsReadOnly="True"/>
+            </StackPanel>-->
+            <Button Style="{StaticResource MainStyle}" Grid.Row="7" Grid.Column="1" 
+                Content="Зберегти інформацію" Click="SaveEmployeeInfo"/>
+            <Button x:Name="BTNEditEmployeeInfo" Style="{StaticResource MainStyle}" Grid.Row="7" Grid.Column="1" 
+                Content="Змінити інформацію" Click="EditEmployeeInfo"/>
+        </Grid>
+        <Button x:Name="BTNCloseInfo" Grid.Row="6" Grid.Column="1" Background="Transparent" BorderThickness="0"
+            Visibility="Collapsed" Click="CloseInfo" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Center">
+            <Image Source="/sources/images/UI/xmark.png" Width="35" Height="35"/>
+        </Button>
+        <Border x:Name="GeneralBackground" Grid.Row="1" Grid.Column="1" Grid.RowSpan="5" 
+            Background="#c2b79a" Panel.ZIndex="1" Visibility="Collapsed" BorderBrush="Black" BorderThickness="1"/>
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" 
+            HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Click="OpenFilters" Background="Transparent" BorderThickness="0" Margin="10 0">
+                <Image Source="/sources/images/openFilters.png" Width="45" Height="45"/>
+            </Button>
+            <Button Click="CheckVacantPosts" Background="Transparent" BorderThickness="0" Margin="10 0">
+                <Image Source="/sources/images/vacantPosts.png" Width="45" Height="45"/>
+            </Button>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" 
+                    HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Background="Transparent" BorderBrush="Transparent"
+                    HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10 0"
+                    Click="ADDEmployee">
+                <Image Source="/sources/images/addPerson.png" Height="45" Width="45"/>
+            </Button>
+            <Button Background="Transparent" BorderBrush="Transparent"
+                    HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10 0"
+                    Click="REMOVEEmployee">
+                <Image Source="/sources/images/removePerson.png" Height="45" Width="45"/>
+            </Button>
+        </StackPanel>
+        <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button x:Name="BooksList" Click="ShowEmployeesList" Background="Transparent" BorderThickness="0" Margin="10 0">
+                <Image Source="/sources/images/employeeGeneralList.png" Width="45" Height="45"/>
+            </Button>
+        </StackPanel>
+        <Grid x:Name="VacantPostsResult" Grid.Row="1" Grid.Column="1" Grid.RowSpan="5" 
+            Panel.ZIndex="10" Visibility="Collapsed">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+        </Grid>
+        <Button x:Name="BTNSavePostList" Style="{StaticResource MainStyle}" Grid.Row="7" Grid.Column="1" 
+                Content="Зберегти зміни" Click="SavePostList" Visibility="Collapsed"/>
+        <Button x:Name="BTNEditPostList" Style="{StaticResource MainStyle}" Grid.Row="7" Grid.Column="1" 
+                Content="Редагувати список" Click="EditPostList" Visibility="Collapsed"/>
+        <Border x:Name="FiltersGrid" Grid.Column="1" Grid.Row="1" Grid.RowSpan="6" Visibility="Collapsed" Panel.ZIndex="10">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <!--<StackPanel Grid.Row="0" Visibility="Collapsed">
+                    <TextBlock HorizontalAlignment="Center" Text="Зарплатня" FontSize="19"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 5">
+                        <TextBlock Text="від" Margin="0 0 10 0" FontSize="17"/>
+                        <TextBox x:Name="MinSalary" Width="50" Text="" Margin="0 0 10 0"
+                        HorizontalContentAlignment="Center" Padding="0"/>
+                        <TextBlock Text="до" Margin="0 0 10 0" FontSize="17"/>
+                        <TextBox x:Name="MaxSalary" Width="50" Text="" Margin="0 0 10 0"
+                        HorizontalContentAlignment="Center" Padding="0"/>
+                    </StackPanel>
+                </StackPanel>-->
+                <StackPanel Grid.Row="0">
+                    <TextBlock HorizontalAlignment="Center" Text="Загальний досвід роботи:" FontSize="19"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 5">
+                        <TextBlock Text="від" Margin="0 0 10 0" FontSize="17"/>
+                        <TextBox x:Name="MinExperience" Width="50" Text="" Margin="0 0 10 0"
+                        HorizontalContentAlignment="Center" Padding="0"/>
+                        <TextBlock Text="до" Margin="0 0 10 0" FontSize="17"/>
+                        <TextBox x:Name="MaxExperience" Width="50" Text="" Margin="0 0 10 0"
+                        HorizontalContentAlignment="Center" Padding="0"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Grid.Row="1">
+                    <TextBlock HorizontalAlignment="Center" Text="Дата найму" FontSize="19"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 5">
+                        <TextBlock Text="від" Margin="0 0 10 0" FontSize="17"/>
+                        <DatePicker x:Name="StartDate" Text="0" Margin="0 0 10 0"
+                        HorizontalContentAlignment="Center" Padding="0"/>
+                        <TextBlock Text="до" Margin="0 0 10 0" FontSize="17"/>
+                        <DatePicker x:Name="EndDate" Margin="0 0 10 0"
+                        HorizontalContentAlignment="Center" Padding="0"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="2" 
+                    HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <StackPanel Margin="15 0" HorizontalAlignment="Left">
+                        <TextBlock Text="Посада працівника:" Margin="10 0" FontWeight="DemiBold"/>
+                        <ComboBox x:Name="EmployeePostList" BorderThickness="0" Height="25" 
+                              DropDownOpened="UpdateEmployeePostList"/>
+                    </StackPanel>
+                    <StackPanel Margin="15 0" HorizontalAlignment="Left">
+                        <TextBlock Text="Статус зайнятості:" Margin="10 0" FontWeight="DemiBold"/>
+                        <ComboBox x:Name="EmploymentStatus" BorderThickness="0" Height="25" 
+                                  DropDownOpened="UpdateEmploymentStatus">
+                            <ComboBoxItem Content="Працює"/>
+                            <ComboBoxItem Content="Звільнено"/>
+                        </ComboBox>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="3" 
+                    HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <StackPanel Margin="15 0" Grid.Column="0" Grid.Row="2"
+                                HorizontalAlignment="Right">
+                        <TextBlock Text="Сімейний стан:" Margin="10 0" FontWeight="DemiBold"/>
+                        <ComboBox x:Name="FamilyStatusList" BorderThickness="0" Height="25" 
+                                  DropDownOpened="UpdateFamilyStatusList">
+                            <ComboBoxItem Content="одружений"/>
+                            <ComboBoxItem Content="неодружений"/>
+                        </ComboBox>
+                    </StackPanel>
+                    <StackPanel Margin="15 0" Grid.Column="0" Grid.Row="3"
+                    VerticalAlignment="Center" HorizontalAlignment="Right">
+                        <TextBlock Text="Кількість дітей:" Margin="10 0" FontWeight="DemiBold"/>
+                        <TextBox x:Name="ChildrenNumberFilter" Height="25"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Grid.Row="4">
+                    <TextBlock HorizontalAlignment="Center" Text="Замовлень завершено" FontSize="19"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 5">
+                        <TextBlock Text="від" Margin="0 0 10 0" FontSize="17"/>
+                        <TextBox x:Name="MinCompletedNumber" Width="50" Text="" Margin="0 0 10 0"
+                        HorizontalContentAlignment="Center" Padding="0"/>
+                        <TextBlock Text="до" Margin="0 0 10 0" FontSize="17"/>
+                        <TextBox x:Name="MaxCompletedNumber" Width="50" Text="" Margin="0 0 10 0"
+                        HorizontalContentAlignment="Center" Padding="0"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="5">
+                    <Button Click="ClearAllFilters" Margin="0 0 30 0"
+                        Background="Transparent" BorderBrush="Transparent"
+                        HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Image Source="/sources/images/resetFilters.png" Height="35" Width="38"/>
+                    </Button>
+                    <Button Click="ApplyAllFilters" Background="Transparent" BorderBrush="Transparent"
+                        HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Image Source="/sources/images/applyFilters.png" Height="35" Width="40"/>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

@@ -1,0 +1,69 @@
+﻿<Window x:Class="Publisher.Home"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Publisher"
+        mc:Ignorable="d"
+        Title="Home" 
+        FontSize="15"
+        ResizeMode="NoResize"
+        Height="450" Width="800" 
+        WindowStartupLocation="CenterScreen"
+        Background="#dbcead" Icon="/sources/images/home.png">
+    <Grid Loaded="LDSessionData">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width=".1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".1*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBox x:Name="Search" Grid.Column="1" Margin="10 5" Text="Пошук" GotFocus="ClearText"
+                 LostFocus="SearchPlaceholder" Foreground="#7a7360" PreviewKeyUp="SearchControl"/>
+        <StackPanel x:Name="SearchHints" Grid.Column="1" Grid.Row="1" Panel.ZIndex="1" 
+                    Background="#dbcead" Visibility="Collapsed">
+        </StackPanel>
+        <Button Grid.Column="2" Grid.Row="0" Background="Transparent" BorderBrush="Transparent"
+                Margin="3" Click="OpenBurgerMenu">
+            <Image Source="/sources/images/UI/burger-menu.png"/>
+        </Button>
+        <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Source="/sources/images/home.jpeg"/>
+        <TextBlock Grid.Column="1" Text="Видавництво
+                   «Книжкова вежа»" TextWrapping="Wrap"
+           Grid.Row="1" TextAlignment="Center"
+           HorizontalAlignment="Center" VerticalAlignment="Top"
+           Foreground="Black" FontSize="32" Margin="0,67,0,0"/>
+        <TextBlock Grid.Column="1" FontStyle="Italic" FontSize="13"
+                   Text ="      Ми - ваш надійний партнер у світі книг. Наші видання відображають різноманіття ідей та авторських голосів, а також ми активно підтримуємо культурні події та дискусії. Приєднуйтесь до нас, щоб відкрити нові горизонти читання та знань разом !" 
+                   Margin="20 70 15 0"
+                   Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Justify"/>
+        <StackPanel x:Name="BurgerMenuBG" Grid.ColumnSpan="3" Grid.RowSpan="2" 
+                    Background="#f3e5c0" Visibility="Collapsed">
+        </StackPanel>
+        <StackPanel x:Name="BurgerMenu" Background="#312e26"
+                    Grid.Column="1" Grid.RowSpan="2" Grid.ColumnSpan="2" Visibility="Collapsed">
+            <Button Grid.Column="0" Grid.Row="0" 
+                    Background="Transparent" BorderBrush="Transparent" 
+                    Margin="3" Click="CloseBurgerMenu" Height="33" Width="33"
+                    VerticalAlignment="Top" HorizontalAlignment="Right">
+                <Image Source="/sources/images/UI/xmark.png"/>
+            </Button>
+            <TextBox Text="Меню" FontSize="25" Background="Transparent" Foreground="#c2b79a"
+                     HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <StackPanel Margin="30">
+                <Button x:Name="BTNCatalog" Style="{StaticResource MainStyle}" Content="Каталог" 
+                        Margin="0 0 0 35" Click="OpenCatalog"/>
+                <Button x:Name="BTNLogIn" Style="{StaticResource MainStyle}" Content="Увійти" Click="OpenLogIn"/>
+                <Button x:Name="BTNProfSettings" Style="{StaticResource MainStyle}"
+                        Content="Особиста інформація" Click="ProfileSettings"/>
+                <Button x:Name="BTNSalesDepartment" Style="{StaticResource MainStyle}" Margin="0 35 0 0"
+                        Content="Відділ продажів" Click="SalesDepartment"/>
+                <Button x:Name="BTNEmployeeDepartment" Style="{StaticResource MainStyle}" Margin="0 35 0 0"
+                        Content="Відділ працівників" Click="EmployeeDepartment"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

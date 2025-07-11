@@ -1,0 +1,129 @@
+﻿<Window x:Class="Publisher.MakeOrder"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Publisher"
+        mc:Ignorable="d"
+        Title="MakeOrder" FontSize="15"
+        ResizeMode="NoResize"
+        Height="450" Width="800" 
+        WindowStartupLocation="CenterScreen"
+        Background="#dbcead" Icon="/sources/images/makeOrder.png">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width=".7*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Button Grid.Column="1" Grid.Row="0" Margin="0 5 5 0"
+                Background="Transparent" BorderBrush="Transparent"
+                HorizontalAlignment="Right" VerticalAlignment="Top"
+                Click="GoHome">
+            <Image Source="/sources/images/home.png" Height="35" Width="35"/>
+        </Button>
+        <Button Grid.Column="0" Grid.Row="0" Margin="5 5 0 0"
+                Background="Transparent" BorderBrush="Transparent"
+                HorizontalAlignment="Left" VerticalAlignment="Top"
+                Click="ADDCustomer">
+            <Image Source="/sources/images/addPerson.png" Height="35" Width="35"/>
+        </Button>
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Оформлення замовлення" FontSize="20" 
+                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <StackPanel Grid.Row="1" Grid.Column="0" Margin="10 0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200">
+            <TextBlock Text="ПІБ отримувача:" Margin="10 0 0 0" FontWeight="DemiBold"/>
+            <ComboBox x:Name="CustomerFullName" BorderThickness="0" Height="25" DropDownOpened="UpdateCustomer"
+                      SelectionChanged="UpdateCustomerInfo"/>
+        </StackPanel>
+        <CheckBox x:Name="IsRegular" Content="Постіний" Grid.Row="1" Grid.Column="0" Margin="10 0" 
+                  Checked="IsRegularChecked" Unchecked="IsRegularChecked"
+                  HorizontalAlignment="Right" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
+        <StackPanel Grid.Row="2" Grid.Column="0" Margin="10 0" VerticalAlignment="Top">
+            <TextBlock Text="Номер телефону отримувача:" Margin="10 0 0 0" FontWeight="DemiBold"/>
+            <TextBox x:Name="CustomerPhoneNumber" BorderThickness="0" Height="25"/>
+        </StackPanel>
+        <StackPanel Grid.Row="3" Grid.Column="0" Margin="10 0" VerticalAlignment="Top">
+            <TextBlock Text="Адреса доставки:" 
+               Margin="10 0 0 0" FontWeight="DemiBold"/>
+            <TextBox x:Name="DeliveryAddress" BorderThickness="0" Height="25"/>
+        </StackPanel>
+        <StackPanel Margin="15 0" VerticalAlignment="Top" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left">
+            <TextBlock Text="Тип доставки:" Margin="10 0" FontWeight="DemiBold"/>
+            <ComboBox x:Name="DeliveryType" BorderThickness="0" Height="25">
+                <ComboBoxItem>Кур`єр</ComboBoxItem>
+                <ComboBoxItem>Самовивіз</ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
+        <StackPanel Margin="15 0" VerticalAlignment="Top" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Right">
+            <TextBlock Text="Дата оформлення:" Margin="10 0" FontWeight="DemiBold"/>
+            <TextBlock x:Name="RegistrationDate"  Height="25" HorizontalAlignment="Center"/>
+        </StackPanel>
+        
+        <Grid Grid.Column="1" Grid.Row="1" Grid.RowSpan="4" Background="#c2b79a">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width=".3*"/>
+                <ColumnDefinition Width=".8*"/>
+                <ColumnDefinition Width=".5*"/>
+                <ColumnDefinition Width=".6*"/>
+                <ColumnDefinition Width=".8*"/>
+                <ColumnDefinition Width=".4*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Border BorderBrush="#49453a" BorderThickness="1 1 0 1" Grid.Column="0" Grid.Row="0">
+                <TextBlock Text="№" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+            <Border BorderBrush="#49453a" BorderThickness="1 1 0 1" Grid.Column="1" Grid.Row="0">
+                <TextBlock Text="Назва" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+            <Border BorderBrush="#49453a" BorderThickness="1 1 0 1" Grid.Column="2" Grid.Row="0">
+                <TextBlock Text="Кількість" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+            <Border BorderBrush="#49453a" BorderThickness="1 1 0 1" Grid.Column="3" Grid.Row="0">
+                <TextBlock Text="За книгу" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+            <Border BorderBrush="#49453a" BorderThickness="1 1 0 1" Grid.Column="4" Grid.Row="0">
+                <TextBlock Text="Загальна сума" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+            <Border BorderBrush="#49453a" BorderThickness="1" Grid.Column="5" Grid.Row="0">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+            <ScrollViewer VerticalScrollBarVisibility="Hidden" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6">
+                <Border BorderBrush="#49453a" BorderThickness="1 0 1 1">
+                    <StackPanel x:Name="BookList"/>
+                </Border>
+            </ScrollViewer>
+        </Grid>
+        <StackPanel Grid.Column="1" Grid.Row="5" VerticalAlignment="Top" HorizontalAlignment="Left" 
+                    Orientation="Horizontal" Margin="0 10">
+            <TextBlock Margin="10 0" Text="Загальна к-ть книжок:" FontWeight="DemiBold"/>
+            <TextBlock x:Name="AllBookNumber" Grid.Column="1" Grid.Row="5" Text="0"
+                       MaxWidth="230" TextTrimming="CharacterEllipsis"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Left" 
+                    Orientation="Horizontal"  Margin="0 25 0 0">
+            <TextBlock Margin="10 0" Text="Загальна вартість:" FontWeight="DemiBold" VerticalAlignment="Center"/>
+            <TextBlock x:Name="AllBookPrice" Grid.Column="1" Grid.Row="5" Text="0"
+                       MaxWidth="230" VerticalAlignment="Center"/>
+            <Image x:Name="DiscountImage" Source="sources/images/regularDiscount.png" Grid.Column="1" Grid.Row="5" 
+                   Width="20" Height="20" Margin="0 -15 5 0" Visibility="Collapsed"/>
+            <TextBlock x:Name="AllBookPriceWithDiscount" Grid.Column="1" Grid.Row="5" Text="0"
+                       MaxWidth="230" VerticalAlignment="Center" Visibility="Collapsed"/>
+        </StackPanel>
+        <Button x:Name="BTNAddOrder" Grid.Column="0" Grid.Row="5" Click="ADDOrder"
+                Style="{StaticResource MainStyle}" Content="Оформити замовлення"/>
+        <Button Grid.Column="1" Grid.Row="5" Click="AddBookToList" Background="Transparent" BorderThickness="0"
+                HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 10 0">
+            <Image Source="/sources/images/addBookIcon.png" Width="35" Height="35"/>
+        </Button>
+    </Grid>
+</Window>
